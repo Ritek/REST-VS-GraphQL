@@ -1,0 +1,52 @@
+type Student {
+    id: Int
+    class_id: Class
+    first_name: String
+    last_name: String
+    gender: String
+    email: String
+    class: Class
+}
+
+type Teacher {
+    id: Int
+    first_name: String
+    last_name: String
+    email: String
+    subject: String
+    class: Class
+}
+
+type Class {
+    id: Int
+    year: Int
+    teacher_id: Int
+    second_language: String
+    teacher: Teacher
+    students: [Student]
+}
+
+type Query {
+    student(id: Int!): Student
+    students: [Student]
+
+    teacher(id: Int!): Teacher
+    teachers: [Teacher]
+
+    class(id: Int!): Class
+    classes: [Class]
+}
+
+type Mutation {
+    addStudent(input: NewStudentInput): String
+    addTeacher(input: NewStudentInput): String
+}
+
+input NewStudentInput {
+    id: Int!
+    class_id: Int!
+    first_name: String!
+    last_name: String!
+    gender: String!
+    email: String!
+}
